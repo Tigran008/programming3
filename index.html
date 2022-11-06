@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of the life</title>
+
+    <style>
+        #legend {
+           position: absolute;
+           top: 0;
+           right: 0;
+           width: 800px;
+        }
+  
+        .legend-color {
+           width: 30px;
+           height: 30px;
+        }
+  
+        td {
+           border: 1px solid black;
+           font-size: 14px;
+           padding-left: 5px;
+        }
+        table {
+            margin-right: 70px;
+            margin-top: 25px;
+        }
+     </style>
+</head>
+<body>
+
+    <table id="legend">
+        <tr>
+           <td class="legend-color">Գույն</td>
+           <td>Անվանում</td>
+           <td>Շարժվում է</td>
+           <td>Ուտում է</td>
+           <td>Բազմանում է</td>
+           <td>Սատկում է</td>
+           <td>Առանձնահատկություններ</td>
+
+        </tr>
+  
+        <tr>
+           <td class="legend-color" style="background-color:gray"></td>
+           <td>Դատարկ վանդակներ</td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+
+        </tr>
+        <tr>
+           <td class="legend-color" style="background-color:green"></td>
+           <td>Խոտ</td>
+           <td>Զի շարժվում</td>
+           <td>Զի սնվում</td>
+           <td>Մոտակա 8 վանդակներում,երբ էներգիան մեծ է 8֊ից</td>
+           <td>Երբ իրեն ուտում են</td>
+           <td></td>
+
+        </tr>
+        <tr>
+           <td class="legend-color" style="background-color:yellow"></td>
+           <td>Խոտակեր</td>
+           <td>Մոտակա 8 վանդակներում, էներգիան քչանում է 1֊ով</td>
+           <td> Մոտակա 8 վանդակներում գտնվող ցանկացած խոտին, շարժվելիս էներգիան քչանում է 1֊ով</td>
+           <td>Բազմանում է մոտակա տարածքներում, երբ էներգիան 12֊ից ավել է</td>
+           <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+           <td></td>
+
+        </tr>
+        <tr>
+           <td class="legend-color" style="background-color:orangered"></td>
+           <td>Գիշատիչ</td>
+           <td>Մոտակա 8 վանդակներում, էներգիան քչանում է 1֊ով</td>
+           <td>Մոտակա 8 վանդակներում գտնվող ցանկացած խոտակերին, շարժվելիս էներգիան քչանում է 1֊ով</td>
+           <td>Բազմանում է մոտակա տարածքներում, երբ էներգիան 12֊ից ավել է</td>
+           <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+           <td></td>
+
+        </tr>
+        <tr>
+           <td class="legend-color" style="background-color: white"></td>
+           <td>Կյանքի գեներատոր</td>
+           <td>Մոտակա 8 վանդակներում</td>
+           <td>Չի ուտում</td>
+           <td>Չի Բազմանում</td>
+           <td>Չի սատկում</td>
+           <td>Երբ խոտակերներն ու գիշատիչները սատկում են, նորից բազմացնում է դրանց: Գույնը փոխում է մանուշակագույն
+           </td>
+
+        </tr>
+        <tr>
+           <td class="legend-color" style="background-color: black"></td>
+           <td>Բոմբ</td>
+           <td>Մոտակա 8 վանդակներում , էներգիան ավելանում է 1֊ով</td>
+           <td>Չի ուտում</td>
+           <td>Չի Բազմանում</td>
+           <td>Չի սատկում</td>
+           <td>Երբ էներգիան հասնում է 8-ի պայթեցնում է մոտակա 8 վանդակները</td>
+
+        </tr>
+        
+     </table>
+
+   <script src="livingcreature.js"></script>
+    <script src="script.js"></script>
+    <script src="class.js"></script>
+    <script src="grass.js"></script>
+    <script src="grasseater.js"></script>
+    <script src="lifegenerator.js"></script>
+    <script src="predator.js"></script>
+    <script src="bomb.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script> 
+</body>
+</html>

@@ -1,5 +1,5 @@
 var LivingCreature = require("./livingcreature")
-module.exports = class Predator extends LivingCreature{
+module.exports = class Alleater extends LivingCreature{
     constructor(x, y, index) {
         super(x, y, index)
         this.energy = 8;
@@ -29,7 +29,7 @@ module.exports = class Predator extends LivingCreature{
             var newX = newCell[0];
             var newY = newCell[1];
 
-            matrix[newY][newX] = 4
+            matrix[newY][newX] = 6
             matrix[this.y][this.x] = 0;
 
             this.x = newX;
@@ -53,33 +53,35 @@ module.exports = class Predator extends LivingCreature{
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 4
-            predator.push(new Predator(newX, newY, 1));
+            alleater.push(new Alleater(newX, newY, 1));
             this.energy = 8;
         }
     }
 
     die() {
-        for (const i in predator) {
-            if (this.x == predator[i].x && this.y == predator[i].y) {
-                predator.splice(i, 1)
-                break
+        for (const i in alleater) {
+            if (this.x == alleater[i].x && this.y == alleater[i].y) {
+                alleater.splice(i, 1)
+                break;
 
             }
         }
-        matrix[this.y][this.x] = 0
+        matrix[this.y][this.x] = 0;
     }
 
 
     eat() {
         // var grassCells = this.chooseCell(2);
         var newCell = this.random(2);
+        var newCell2 = this.random(1);
+        var newCell3 = this.random(4);
 
         if (newCell) {
 
             var newX = newCell[0];
             var newY = newCell[1];
 
-            matrix[newY][newX] = 4;
+            matrix[newY][newX] = 6;
             matrix[this.y][this.x] = 0;
 
             this.x = newX;
@@ -99,8 +101,68 @@ module.exports = class Predator extends LivingCreature{
                 // console.log(this.energy);
                 this.mul();
             }
+        } else {
+            this.move();
         }
-        else {
+
+
+        if (newCell2) {
+
+            var newX = newCell2[0];
+            var newY = newCell2[1];
+
+            matrix[newY][newX] = 6;
+            matrix[this.y][this.x] = 0;
+
+            this.x = newX;
+            this.y = newY;
+            this.energy += 5;
+
+            for (const i in grassArr) {
+                if (newX == grassArr[i].x && newY == grassArr[i].y) {
+                    grassArr.splice(i, 1)
+                    break
+
+                }
+
+            }
+
+            // if (this.energy >= 12) {
+            //     // console.log(this.energy);
+            //     this.mul();
+            // }
+        } else {
+            this.move();
+        }
+
+
+
+        if (newCell3) {
+
+            var newX = newCell3[0];
+            var newY = newCell3[1];
+
+            matrix[newY][newX] = 6;
+            matrix[this.y][this.x] = 0;
+
+            this.x = newX;
+            this.y = newY;
+            this.energy += 5;
+
+            for (const i in predator) {
+                if (newX == predator[i].x && newY == predator[i].y) {
+                    predator.splice(i, 1)
+                    break
+
+                }
+
+            }
+
+            if (this.energy >= 12) {
+                // console.log(this.energy);
+                this.mul();
+            }
+        } else {
             this.move();
         }
     }

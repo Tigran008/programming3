@@ -1,4 +1,10 @@
-class LifeGenerator extends LivingCreature{
+var LivingCreature = require("./livingcreature")
+var GrassEater = require("./grasseater")
+var Predator = require("./predator")
+var Alleater = require("./alleater")
+
+
+module.exports = class LifeGenerator extends LivingCreature{
     constructor(x, y, index) {
         super(x, y, index)
         this.directions = []
@@ -15,9 +21,14 @@ class LifeGenerator extends LivingCreature{
         return super.chooseCell(character)
 
     }
+    random(ch){
+        let found = this.chooseCell(ch);
+        let result = Math.floor(Math.random()*found.length)
+        return found[result];
+    }
     move() {
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        // var emptyCells = this.chooseCell(0);
+        var newCell = this.random(0);
 
         if (newCell) {
             var newX = newCell[0];
@@ -33,6 +44,7 @@ class LifeGenerator extends LivingCreature{
 
         this.mulEater()
         this.mulPredator()
+        this.mulAlleater( )
 
 
     }
@@ -60,6 +72,19 @@ class LifeGenerator extends LivingCreature{
             }
         }
     }
+
+    mulAlleater() {
+        if (alleater.length == 0) {
+            const x = Math.round(Math.random() * 19);
+            const y = Math.round(Math.random() * 19);
+            if (matrix[y][x] == 0) {
+                alleater.push(new Alleater(x, y, 6))
+                matrix[y][x] = 6
+            }
+        }
+    }
+
+    
 
 
 

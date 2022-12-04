@@ -1,4 +1,5 @@
-class Bomb extends LivingCreature{
+var LivingCreature = require("./livingcreature")
+module.exports = class Bomb extends LivingCreature{
     constructor(x, y, index) {
         super(x,y, index)
         this.directions = []
@@ -16,9 +17,14 @@ class Bomb extends LivingCreature{
         return super.chooseCell(character)
 
     }
+    random(ch){
+        let found = this.chooseCell(ch);
+        let result = Math.floor(Math.random()*found.length)
+        return found[result];
+    }
     move() {
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        // var emptyCells = this.chooseCell(0);
+        var newCell = this.random(0);
 
         if (newCell) {
             var newX = newCell[0];

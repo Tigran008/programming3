@@ -11,23 +11,167 @@
            position: absolute;
            top: 0;
            right: 0;
-           width: 800px;
+           width: 1000px;
         }
   
         .legend-color {
-           width: 30px;
-           height: 30px;
+           width: 100px;
+           height: 100px;
         }
   
         td {
            border: 1px solid black;
-           font-size: 14px;
-           padding-left: 5px;
+           font-size: 18px;
+           padding-left: 5px; 
+           text-align: center;
         }
         table {
             margin-right: 70px;
             margin-top: 25px;
         }
+
+        /* CSS */
+.autumn {
+   color: aliceblue;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 20px;
+}
+
+.autumn:after {
+  content: "";
+  background-color: #ffe54c;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.autumn:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+
+.summer {
+   color: aliceblue;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 20px;
+}
+
+.summer:after {
+  content: "";
+  background-color: rgb(255, 144, 8);
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.summer:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+
+
+.winter {
+   color: aliceblue;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 20px;
+}
+
+.winter:after {
+  content: "";
+  background-color: rgb(208, 208, 208);
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.winter:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+.spring {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  color: aliceblue;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 20px;
+}
+
+.spring:after {
+  content: "";
+  background-color: rgb(35, 207, 55);
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.spring:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+
+
      </style>
 </head>
 <body>
@@ -105,17 +249,35 @@
            <td>Երբ էներգիան հասնում է 8-ի պայթեցնում է մոտակա 8 վանդակները</td>
 
         </tr>
+        <tr>
+         <td class="legend-color" style="background-color: blue"></td>
+         <td>Ամենակեր</td>
+         <td>Մոտակա 8 վանդակներում</td>
+         <td>Մոտակա 8 վանդակներում գտնվող ցանկացած խոտակերին,խոտին, գիշատչին շարժվելիս էներգիան քչանում է 1֊ով</td>
+         <td>Բազմանում է մոտակա տարածքներում, երբ էներգիան 12֊ից ավել է</td>
+         <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+         <td></td>
+
+      </tr>
         
      </table>
 
-   <script src="livingcreature.js"></script>
-    <script src="script.js"></script>
-    <script src="class.js"></script>
-    <script src="grass.js"></script>
-    <script src="grasseater.js"></script>
-    <script src="lifegenerator.js"></script>
-    <script src="predator.js"></script>
-    <script src="bomb.js"></script>
+     <!-- HTML !-->
+
+    <button class="summer" onclick="summer()" role="button">Summer</button>
+<button class="autumn" onclick="autumn()" role="button">Autumn</button>
+<button class="winter" onclick="winter()" role="button">Winter</button>
+<button class="spring" onclick="spring()" role="button">Spring</button>
+
+
+
+
+
+
+
+    
+    <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script> 
+    <script src="script.js"></script>
 </body>
 </html>
